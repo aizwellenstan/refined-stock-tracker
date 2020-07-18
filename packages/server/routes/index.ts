@@ -18,6 +18,7 @@ router.use('/api', (req, res) => {
   console.log(boundPath);
   //https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?chartLast=1&token=${API_TOKEN}
   // https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?&token=${API_TOKEN}
+  // https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?chartInterval=15&token=${API_TOKEN}
   req.pipe(request(boundPath)).pipe(res);
 });
 

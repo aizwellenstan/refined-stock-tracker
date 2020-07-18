@@ -34,7 +34,7 @@ import StockRow from '../../components/stockrow';
 
 const store = configureStore();
 
-export const Activities = React.memo(() => {
+export const　Stocks = React.memo(() => {
   const { t } = useTranslation();
 
   return (

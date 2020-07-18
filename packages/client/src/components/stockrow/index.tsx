@@ -18,7 +18,7 @@ class StockRow extends Component<Props, dataState>{
 
     componentDidMount() {
         const url = 
-        `$/api/stock/${this.props.ticker}/intraday-prices?chartLast=1`
+        `/api/stock/${this.props.ticker}/intraday-prices?chartLast=1`
         
         fetch(url)
         .then((response) => response.json())
@@ -31,14 +31,12 @@ class StockRow extends Component<Props, dataState>{
 
     render() {
         return (
-            <div>
-                <tr>
-                    <td>{this.props.ticker}</td>
-                    <td>{this.state.data.close}</td>
-                    <td>{this.state.data.date}</td>
-                    <td>{this.state.data.label}</td>
-                </tr>
-            </div>
+            <tr>
+                <td>{this.props.ticker}</td>
+                <td>{this.state.data.close}</td>
+                <td>{this.state.data.date}</td>
+                <td>{this.state.data.label}</td>
+            </tr>
         );
     }
 }

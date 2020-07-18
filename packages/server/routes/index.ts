@@ -29,8 +29,8 @@ router.use('/sw.js', (_, res) => {
 // Progressive web app
 router.use('/manifest.json', ({ i18n }, res) => {
   res.json({
-    name: i18n.t('meta.title', { defaultValue: 'Refined itsukara.link' }),
-    short_name: i18n.t('meta.title_short', { defaultValue: 'Ril' }),
+    name: i18n.t('meta.title', { defaultValue: 'Refined Stock Tracker' }),
+    short_name: i18n.t('meta.title_short', { defaultValue: 'Rst' }),
     display: 'standalone',
     icons: [
       {
@@ -54,7 +54,11 @@ router.use(async (req: any, res) => {
   });
 
   res.status(result.statusCode);
-  res.send(`<!DOCTYPE html>\n${result.staticMarkup}`);
+  res.send(`
+  <!DOCTYPE html>\n
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> \n
+  ${result.staticMarkup}
+  `);
 });
 
 // router.use('/*', (_, res) => {

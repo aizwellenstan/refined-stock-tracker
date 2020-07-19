@@ -15,3 +15,5 @@ export const RESOURCE_HOST = process.env.RESOURCE_HOST as string;
 export const RESOURCE_URL = `${RESOURCE_PROTOCOL}://${RESOURCE_HOST}`;
 
 export const API_TOKEN = process.env.API_TOKEN as string;
+
+export const SUPPORTED_SYMBOLS = process.env.SUPPORTED_SYMBOLS as string;

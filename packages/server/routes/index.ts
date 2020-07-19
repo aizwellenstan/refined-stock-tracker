@@ -1,7 +1,7 @@
 import path from 'path';
 import express from 'express';
 import request from 'request';
-import { RESOURCE_HOST, RESOURCE_PROTOCOL, API_TOKEN } from '../config';
+import { RESOURCE_HOST, RESOURCE_PROTOCOL, API_TOKEN, SUPPORTED_SYMBOLS } from '../config';
 
 import render from '../../client';
 // import manifest from '../../client/static/build/manifest.json';
@@ -15,6 +15,16 @@ const router = express.Router();
 router.use('/api', (req, res) => {
   let reqUrl = req.originalUrl.replace(req.baseUrl,'');
   const boundPath = `${RESOURCE_PROTOCOL}://${RESOURCE_HOST}${reqUrl}&token=${API_TOKEN}`;
+  console.log(boundPath);
+  //https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?chartLast=1&token=${API_TOKEN}
+  // https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?&token=${API_TOKEN}
+  // https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?chartInterval=15&token=${API_TOKEN}
+  req.pipe(request(boundPath)).pipe(res);
+});
+
+router.use('/symbols', (req, res) => {
+  let reqUrl = '/ref-data/symbols?'
+  const boundPath = `${RESOURCE_PROTOCOL}://${SUPPORTED_SYMBOLS}${reqUrl}&token=${API_TOKEN}`;
   console.log(boundPath);
   //https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?chartLast=1&token=${API_TOKEN}
   // https://cloud.iexapis.com/stable/stock/aapl/intraday-prices?&token=${API_TOKEN}
